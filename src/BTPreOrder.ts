@@ -2,7 +2,6 @@ export function walk(curr: BinaryNode<number> | null, path: number[]): void {
   if (!curr) {
     return;
   }
-
   path.push(curr.value);
 
   walk(curr.left, path);
