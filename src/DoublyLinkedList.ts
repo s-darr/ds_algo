@@ -1,9 +1,3 @@
-type LNode<T> = {
-  value: T;
-  prev?: LNode<T>;
-  next?: LNode<T>;
-};
-
 export class DoublyLinkedList<T> {
   public length: number;
   private head?: LNode<T>;

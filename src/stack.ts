@@ -1,8 +1,3 @@
-type SNode<T> = {
-  value: T;
-  prev?: SNode<T>;
-};
-
 class Stack<T> {
   public length: number;
   private head?: SNode<T>;

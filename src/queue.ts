@@ -1,8 +1,3 @@
-type QNode<T> = {
-  value: T;
-  next?: QNode<T>;
-};
-
 class Queue<T> {
   public length: number;
   private head?: QNode<T>;

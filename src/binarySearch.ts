@@ -18,5 +18,3 @@ function bs_list(haystack: number[], needle: number): boolean {
 
   return false;
 }
-
-console.log(bs_list([1, 2, 3, 4, 5], 2));
