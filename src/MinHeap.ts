@@ -6,35 +6,49 @@ export default class MinHeap {
     this.data = [];
     this.length = 0;
   }
-  insert(value: number): void {}
-  delete(): number {}
+
+  insert(value: number): void {
+    this.data[this.length] = value;
+    this.heapifyUp(this.length);
+    this.length++;
+  }
+
+  delete(): number {
+    if (this.length == 0) {
+      return -1;
+    }
+    const out = this.data[0];
+    this.length--;
+    if (this.length === 0) {
+      this.data = [];
+      return out;
+    }
+
+    this.data[0] = this.data[this.length];
+    this.heapifyDown(0);
+    return out;
+  }
 
   private heapifyDown(idx: number): void {
     const lIdx = this.leftChild(idx);
     const rIdx = this.rightChild(idx);
-    if (idx >= this.length || lIdx >= this.length) {
+    if (idx >= this.length) {
       return;
     }
-    const lVal = this.data[lIdx]
-    const rVal = this.data[rIdx]
-    const v = this.data[idx]
 
-    if(lVal > rVal && v > rVal){
-        this.data[idx] = rVal
-        this.data[rIdx] = v;
-        this.heapifyDown(rIdx)
-    }else if (rVal > lVal && v > lVal){
-        this.data[idx] = lVal
-        this.data[lIdx] = v;
-        this.heapifyDown(rIdx)
+    let smallestIdx = idx;
 
+    if (lIdx < this.length && this.data[lIdx] < this.data[smallestIdx]) {
+      smallestIdx = lIdx;
     }
-    
+    if (rIdx < this.length && this.data[rIdx] < this.data[smallestIdx]) {
+      smallestIdx = rIdx;
+    }
 
-    const minValue = 
-
-
-
+    if (smallestIdx !== idx) {
+      this.swap(smallestIdx, idx);
+      this.heapifyDown(smallestIdx);
+    }
   }
 
   private heapifyUp(idx: number): void {
@@ -45,8 +59,7 @@ export default class MinHeap {
     const parentV = this.data[p];
     const v = this.data[idx];
     if (parentV > v) {
-      this.data[p] = v;
-      this.data[p] = v;
+      this.swap(p, idx);
       this.heapifyUp(p);
     }
   }
@@ -59,5 +72,11 @@ export default class MinHeap {
   }
   private rightChild(idx: number): number {
     return idx * 2 + 2;
+  }
+
+  private swap(i: number, j: number): void {
+    const temp = this.data[i];
+    this.data[i] = this.data[j];
+    this.data[j] = temp;
   }
 }
