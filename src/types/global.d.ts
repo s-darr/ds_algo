@@ -14,7 +14,11 @@ declare type QNode<T> = {
   next?: QNode<T>;
 };
 
-type SNode<T> = {
+declare type SNode<T> = {
   value: T;
   prev?: SNode<T>;
 };
+
+declare type WeightedAdjacencyMatrix = number[][];
+type GraphEdge = { to: number; weight: number };
+declare type WeightedAdjacencyList = GraphEdge[][];

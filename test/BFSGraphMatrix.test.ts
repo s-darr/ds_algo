@@ -1,4 +1,4 @@
-import bfs from "../src/BFSGraphMatrix"; // replace with the correct import path
+import bfs from "../src/BFSGraphMatrix";
 type WeightedAdjacencyMatrix = number[][];
 describe("bfs", () => {
   it("returns the shortest path from source to target", () => {
